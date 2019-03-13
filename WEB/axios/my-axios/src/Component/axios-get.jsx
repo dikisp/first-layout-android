@@ -1,19 +1,41 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class fetch extends Component{
-    constructor(props){
-        super(props)
-        this.state ={
-            items : [],
-            isLoaded : false,
-        }
+    state = {
+        persons : [],
     }
+
+    //https://jsonplaceholder.typicode.com/users
+    //http://unikom.ac.id/api/v1/event
+
+    componentDidMount(){
+        // axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('http://unikom.ac.id/api/v1/event')
+        .then(res => {
+            console.log(res);
+            this.setState({persons: res.data.result });
+        
+    });
+}
+
 
     render(){
         return(
             <div>
-                Hallo
+                {this.state.persons.map(person => <li>
+                    {person.nama_event} | {person.pengirim} |{person.foto}
+                </li>
+                )}
             </div>
+            // <div>
+               
+            //     <ul>
+            //         {this.state.persons.map(person => <li>
+            //             {person.name}
+            //         </li>)}
+            //     </ul>
+            // </div>
         )
     }
 }

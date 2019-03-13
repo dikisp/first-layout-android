@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Fetch from './Component/fetch'
+import Fetch from './Component/axios-get'
 
 class App extends Component {
   
